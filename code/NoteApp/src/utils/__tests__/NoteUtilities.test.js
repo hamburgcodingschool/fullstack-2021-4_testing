@@ -1,10 +1,16 @@
 import NoteUtilities from '../NoteUtilities'
-import {describe, it } from "vitest"
+import {describe, expect, it } from "vitest"
 
 describe('NoteUtilities', () => {
     describe('togglePinnedNote', () => {
         it('sets pinned to true when it was false', () => {
-
+            const notes = getNotes();
+            
+            const newNotes = NoteUtilities.togglePinnedNote(notes, "note-2");
+            
+            const note = getNoteById(newNotes, "note-2");
+            
+            expect(note.pinned).toBe(true);
         })
 
         it('sets pinned to false when it was true', () => {
